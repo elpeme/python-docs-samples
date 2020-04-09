@@ -31,13 +31,13 @@ import uuid
 
 
 # [START dialogflow_detect_intent_text]
-def detect_intent_texts(project_id, session_id, texts, language_code):
+def detect_intent_texts(project_id, session_id, texts, language_code, service_account):
     """Returns the result of detect intent with texts as inputs.
 
     Using the same `session_id` between requests allows continuation
     of the conversation."""
     import dialogflow_v2 as dialogflow
-    session_client = dialogflow.SessionsClient()
+    session_client = dialogflow.SessionsClient.from_service_account_json(service_account)
 
     session = session_client.session_path(project_id, session_id)
     print('Session path: {}\n'.format(session))
@@ -83,8 +83,11 @@ if __name__ == '__main__':
         nargs='+',
         type=str,
         help='Text inputs.')
+    parser.add_argument(
+        '--service_account', help='Service account JSON key
+        ')
 
     args = parser.parse_args()
 
     detect_intent_texts(
-        args.project_id, args.session_id, args.texts, args.language_code)
+        args.project_id, args.session_id, args.texts, args.language_code, args.service_account)
