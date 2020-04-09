@@ -84,8 +84,7 @@ if __name__ == '__main__':
         type=str,
         help='Text inputs.')
     parser.add_argument(
-        '--service_account', help='Service account JSON key'
-        ')
+        '--service_account', help='Service account JSON key')
 
     args = parser.parse_args()
 
