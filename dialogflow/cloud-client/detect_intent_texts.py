@@ -67,7 +67,7 @@ if __name__ == '__main__':
         formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument(
         '--project-id',
-        help='Project/agent id. This is a mandaory arg.  Required.',
+        help='Project/agent id. This is a mandatory argument.  Required.',
         required=True)
     parser.add_argument(
         '--session-id',
